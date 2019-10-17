@@ -27,7 +27,7 @@ Step 6: Use PHP's built-in development server or use yours
 $ php artisan serve
 ```
 
-#Features
+# Features
 Commands
 ```
 php artisan photos:import {--O|overwrite : Overwrite current photos by new data}

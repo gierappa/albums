@@ -28,12 +28,11 @@ $ php artisan serve
 ```
 
 #Features
-
 Commands
 ```
-photos:import {--O|overwrite : Overwrite current photos by new data}
-photos:update {ids* : Photos Ids}
-album:assign {id : Album Id}
+php artisan photos:import {--O|overwrite : Overwrite current photos by new data}
+php artisan photos:update {ids* : Photos Ids}
+php artisan album:assign {id : Album Id}
 ```
 
 API endpoints 

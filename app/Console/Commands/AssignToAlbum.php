@@ -47,7 +47,7 @@ class AssignToAlbum extends Command
         }
 
         $photosIds = $this->ask('Provide photos ids (separated by a space) to be assigned to the album');
-        $photosIdsArray = explode(" ", $photosIds);
+        $photosIdsArray = array_map('intval', explode(' ', $photosIds));
 
         $validator = \Validator::make(
             ['photos_ids' => $photosIdsArray],
@@ -60,13 +60,10 @@ class AssignToAlbum extends Command
            return false;
         }
 
-        $photos = Photo::findMany($photosIds);
-
+        $photos = Photo::with('album')->findMany($photosIdsArray);
         $album->photos()->saveMany($photos);
 
-        $album->photos;
-        $this->info('Album photos:');
-        dd($album->toArray());
+        dd($photos->toArray());
         return true;
     }
 }

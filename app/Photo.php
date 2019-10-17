@@ -45,6 +45,6 @@ class Photo extends Model
 
     public function album()
     {
-        return $this->hasOne('App\Album', 'albumId');
+        return $this->belongsTo('App\Album', 'albumId');
     }
 }

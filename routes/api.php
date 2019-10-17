@@ -1,6 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Album;
+use App\Http\Resources\AlbumResource;
+use App\Http\Resources\PhotoResource;
+use App\Photo;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +15,18 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('/photos', function () {
+    return PhotoResource::collection(Photo::all());
+});
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/photo/{id}', function ($id) {
+    return new PhotoResource(Photo::find($id));
+});
+
+Route::get('/albums', function () {
+    return AlbumResource::collection(Album::all());
+});
+
+Route::get('/album/{id}', function ($id) {
+    return new AlbumResource(Album::find($id));
 });
